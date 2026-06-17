@@ -8,16 +8,17 @@ app = Flask(__name__)
 def status():
     return jsonify({"message": "API is running!"})
 
-
 @app.route("/hello/<name>", methods=["GET"])
 def hello(name):
     return jsonify({"greeting": f"Hello, {name}!"})
-
 
 @app.route("/add", methods=["POST"])
 def add_numbers():
     data = request.get_json()
     a = data.get("a")
     b = data.get("b")
-    return
+    return jsonify({"result": a + b})
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
